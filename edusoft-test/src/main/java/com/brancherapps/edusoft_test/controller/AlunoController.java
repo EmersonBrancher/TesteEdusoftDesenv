@@ -39,4 +39,15 @@ public class AlunoController {
             return "RF";
         }
     }
+
+    public StringBuilder apresentarNotas(ArrayList<Nota> notas) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (Nota nota : notas) {
+            stringBuilder.append(nota.getNota());
+            stringBuilder.append(", ");
+        }
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        stringBuilder.deleteCharAt(stringBuilder.length() - 1);
+        return stringBuilder;
+    }
 }

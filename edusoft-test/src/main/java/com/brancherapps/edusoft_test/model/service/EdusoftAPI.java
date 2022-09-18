@@ -47,7 +47,7 @@ public class EdusoftAPI {
 			Response response = client.newCall(request).execute();
 			token = Objects.requireNonNull(response.body()).string();
 		} catch (IOException e) {
-			throw new RequestException("Erro ao buscar o token de autenticação. Erro: " + e.getMessage());
+			throw new RequestException("Erro ao buscar o token de autenticação no servico " + servico + ". Erro: " + e.getMessage());
 		}
 		
 		return token;
@@ -106,12 +106,12 @@ public class EdusoftAPI {
 			return resultadoResponse.getResultado();
 
 		} catch (IOException e) {
-			throw new RequestException("Erro ao consultar alunos. Erro: " + e.getMessage());
+			throw new RequestException("Erro ao gravar dados. Erro: " + e.getMessage());
 		}
 
 	}
 
-	public String montaJsonResponse(ArrayList<AlunosResponse> relacaoAlunos) throws JsonProcessingException {
+	private String montaJsonResponse(ArrayList<AlunosResponse> relacaoAlunos) throws JsonProcessingException {
 		LinkedHashMap<String, String> resultadoMap = new LinkedHashMap<>();
 		LinkedHashMap<String, Object> relacaoAlunosMap = new LinkedHashMap<>();
 		ArrayList<String> resultadoAlunos = new ArrayList<>();

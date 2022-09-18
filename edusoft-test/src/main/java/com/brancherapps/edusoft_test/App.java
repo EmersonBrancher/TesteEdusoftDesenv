@@ -4,6 +4,7 @@ package com.brancherapps.edusoft_test;
 import java.util.ArrayList;
 
 import com.brancherapps.edusoft_test.controller.AlunoController;
+import com.brancherapps.edusoft_test.controller.GeradorRelatorio;
 import com.brancherapps.edusoft_test.model.entities.Aluno;
 import com.brancherapps.edusoft_test.model.entities.AlunosResponse;
 import com.brancherapps.edusoft_test.model.service.EdusoftAPI;
@@ -28,8 +29,17 @@ public class App {
 		} catch (RequestException e) {
 			e.printStackTrace();
 		}
-		String teste = new EdusoftAPI().montaJsonResponse(resultados);
+
+		String teste = null;
+		try {
+			teste = new EdusoftAPI().enviarAlunos(resultados);
+		} catch (RequestException e) {
+			throw new RuntimeException(e);
+		}
 		System.out.println(teste);
+
+		GeradorRelatorio geradorRelatorio = new GeradorRelatorio();
+		geradorRelatorio.gerarRelatorio(listaAlunos);
 
 	}
 
