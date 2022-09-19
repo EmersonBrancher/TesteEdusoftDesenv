@@ -34,7 +34,6 @@ public class EdusoftAPI {
 	
 	private String getToken(String servico) throws RequestException {
 		OkHttpClient client = new OkHttpClient();
-		 
         Request request = new Request.Builder()
          .url(URL_TOKEN + servico)
          .get()
@@ -54,12 +53,11 @@ public class EdusoftAPI {
 	}
 	
 	public ArrayList<Aluno> getAlunos() throws RequestException {
-		String token = this.getToken(SERVICE_RECUPERA_ALUNOS);
 		OkHttpClient client = new OkHttpClient();
 		MediaType mediaType = MediaType.parse("application/json");		
 		RequestBody body = RequestBody.create("", mediaType);
 		Response response;
-		 
+		String token = this.getToken(SERVICE_RECUPERA_ALUNOS);
         Request request = new Request.Builder()
          .url(URL_REQUEST + SERVICE_RECUPERA_ALUNOS)
          .post(body)
@@ -86,13 +84,12 @@ public class EdusoftAPI {
 	}
 
 	public String enviarAlunos(ArrayList<AlunosResponse> resultado) throws RequestException, JsonProcessingException {
-		String token = this.getToken(SERVICE_GRAVA_RESULTADO);
 		OkHttpClient client = new OkHttpClient();
 		MediaType mediaType = MediaType.parse("application/json");
 		RequestBody body = RequestBody.create(this.montaJsonResponse(resultado), mediaType);
-
+		String token = this.getToken(SERVICE_GRAVA_RESULTADO);
 		Request request = new Request.Builder()
-				.url(URL_REQUEST + SERVICE_RECUPERA_ALUNOS)
+				.url(URL_REQUEST + SERVICE_GRAVA_RESULTADO)
 				.post(body)
 				.addHeader(CONTENT_TYPE, APPLICATION_JSON)
 				.addHeader(TOKEN, token)
