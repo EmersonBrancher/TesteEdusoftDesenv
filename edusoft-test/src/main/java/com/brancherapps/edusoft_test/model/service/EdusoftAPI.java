@@ -100,7 +100,7 @@ public class EdusoftAPI {
 			ObjectMapper mapper = new ObjectMapper();
 			ResultadoResponse resultadoResponse = mapper.readValue(Objects.requireNonNull(response.body()).string(), ResultadoResponse.class);
 
-			return resultadoResponse.getResultado();
+			return resultadoResponse.toString();
 
 		} catch (IOException e) {
 			throw new RequestException("Erro ao gravar dados. Erro: " + e.getMessage());

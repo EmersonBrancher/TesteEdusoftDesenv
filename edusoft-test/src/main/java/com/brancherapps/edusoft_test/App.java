@@ -30,13 +30,13 @@ public class App {
 			e.printStackTrace();
 		}
 
-		String teste = null;
+		String imprimeRetorno = null;
 		try {
-			teste = new EdusoftAPI().enviarAlunos(resultados);
+			imprimeRetorno = new EdusoftAPI().enviarAlunos(resultados);
 		} catch (RequestException e) {
 			throw new RuntimeException(e);
 		}
-		System.out.println(teste);
+		System.out.println(imprimeRetorno);
 
 		GeradorRelatorio geradorRelatorio = new GeradorRelatorio();
 		geradorRelatorio.gerarRelatorio(listaAlunos);
