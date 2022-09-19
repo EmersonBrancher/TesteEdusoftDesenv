@@ -20,21 +20,5 @@ public class Nota {
 		setNota(nota);
 		setFaltas(faltas);
 	}
-	
-	public double getNota() {
-		return nota;
-	}
-
-	public void setNota(double nota) {
-		this.nota = nota;
-	}
-
-	public int getFaltas() {
-		return faltas;
-	}
-
-	public void setFaltas(int faltas) {
-		this.faltas = faltas;
-	}    
 
 }
